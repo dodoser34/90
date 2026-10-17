@@ -25,7 +25,8 @@ from sqlalchemy import event
 from app.api.routers import auth as auth_router
 from app.core.rate_limit import limiter
 from app.db.session import Base, engine
-from app.main import app, ensure_admin
+from app.main import app
+from app.lifecycle import ensure_admin
 from app.services import emails
 
 ADMIN_PASSWORD = 'Owner-Strong-Pass-71'

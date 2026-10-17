@@ -53,7 +53,7 @@ def cmd_seed(args) -> int:
 
 
 def cmd_admin(_args) -> int:
-    from .main import ensure_admin
+    from .lifecycle import ensure_admin
 
     asyncio.run(ensure_admin())
     print('Готово')

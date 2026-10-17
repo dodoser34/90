@@ -1,6 +1,6 @@
 import pytest
 
-from app import main
+from app import lifecycle, main
 from app.core.config import Settings
 from app.db.session import get_db
 
@@ -50,14 +50,14 @@ def test_production_supports_explicit_anonymous_smtp_relay():
 
 @pytest.mark.asyncio
 async def test_production_startup_fails_if_admin_database_initialization_fails(monkeypatch):
-    monkeypatch.setattr(main, 'get_settings', production_settings)
+    monkeypatch.setattr(lifecycle, 'get_settings', production_settings)
 
     async def unavailable():
         raise RuntimeError('test database unavailable')
 
-    monkeypatch.setattr(main, 'ensure_admin', unavailable)
+    monkeypatch.setattr(lifecycle, 'ensure_admin', unavailable)
     with pytest.raises(RuntimeError, match='подготовить базу данных'):
-        async with main.lifespan(main.app):
+        async with lifecycle.lifespan(main.app):
             pytest.fail('production must not start with an unavailable database')
 
 

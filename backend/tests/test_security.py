@@ -369,7 +369,7 @@ def test_production_accepts_good_settings():
 
 async def test_admin_from_password_hash(client):
     from app.core.security import hash_password
-    from app.main import ensure_admin
+    from app.lifecycle import ensure_admin
 
     s = get_settings()
     old = s.admin_password, s.admin_password_hash
