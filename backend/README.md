@@ -5,27 +5,27 @@
 ## Свой компьютер — без настроек
 
 Из папки `backend`:
-```bash
+```powershell
 python -m venv .venv
 ```
-```bash
-.venv\Scripts\python -m pip install -r requirements-dev.txt
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 ```
-```bash
-.venv\Scripts\python -m uvicorn app.main:app --reload --port 8000
+```powershell
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --port 8000
 ```
 
 Сам создаётся `dev.db` (SQLite) со стартовыми категориями; товары автоматически не добавляются. Администратор `admin@demo.kz` / `admin12345`; коды из писем — в `dev-mail.log`. Примеры товаров при необходимости добавляются отдельно через `demo/seed_backend.py`.
 На macOS/Linux вместо `.venv\Scripts\python` пишется `.venv/bin/python`. Подробно — [docs/02-Как-запустить.md](../docs/02-Как-запустить.md).
 
 Тесты:
-```bash
-.venv\Scripts\python -m pytest
+```powershell
+.\.venv\Scripts\python.exe -m pytest
 ```
 
 ## Сервер
 
-Все настройки — `deploy/.env` (образец с пояснениями — [`deploy/.env.example`](../deploy/.env.example)).
+Для запуска через Docker настройки записываются в `deploy/.env` (образец — [`deploy/.env.example`](../deploy/.env.example)). При обычном запуске Python используются переменные процесса и файлы `.env`, перечисленные в [главе 23](../docs/23-Переменные-окружения.md).
 Публикация — [docs/13](../docs/13-Публикация-на-сервере.md), база — [docs/08](../docs/08-База-данных.md),
 оплата — [docs/10](../docs/10-Оплата.md), безопасность — [docs/09](../docs/09-Безопасность.md).
 
@@ -49,7 +49,7 @@ python -m venv .venv
 | `app/services/` | оплата (`payments/`), письма, стартовое наполнение |
 | `app/api/` | адреса `/api/…`, права доступа, формат ответов |
 | `migrations/` | изменения схемы базы |
-| `tests/` | Автоматические проверки API, базы, оплаты и настроек; команды и результаты — в разделе 16 |
+| `tests/` | Автоматические проверки API, базы, оплаты и настроек; команды и объяснение результатов — в главе 16 |
 
 Новая таблица или поле: изменить `app/db/models.py` → `alembic revision --autogenerate -m "что изменилось"` → проверить файл в `migrations/versions/` → `alembic upgrade head` (на сервере применяется само при запуске).
 

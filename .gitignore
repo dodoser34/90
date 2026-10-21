@@ -134,15 +134,9 @@ logs/
 tmp/
 temp/
 
-# Локальные настройки редакторов и AI-инструментов
+# Локальные настройки редакторов
 .vscode/
 .idea/
-.claude/
-.codex/
-.agents/
-.cursor/
-.aider*
-.playwright-mcp/
 *.swp
 *.swo
 *.suo

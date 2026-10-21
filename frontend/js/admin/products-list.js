@@ -88,7 +88,7 @@
     const draw = () => {
       visible = filtered();
       document.getElementById('p-table').innerHTML = visible.length
-        ? `<table class="adm-table">
+        ? `<table class="adm-table adm-table-cards">
             <thead><tr>
               <th class="col-check"><input type="checkbox" class="row-check" id="sel-all" aria-label="Выбрать все" ${visible.every((p) => state.selected.has(p.id)) ? 'checked' : ''}></th>
               <th></th>${th('name', 'Товар')}${th('category', 'Категория', 'hide-sm')}${th('price', 'Цена')}${th('stock', 'Остаток')}<th class="hide-sm">Метки</th><th></th>

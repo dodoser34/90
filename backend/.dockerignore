@@ -1,9 +1,6 @@
 # Docker использует собственные исключения: .gitignore на образ не влияет.
 .git
 .github
-.claude
-.codex
-.agents
 .vscode
 .idea
 .env

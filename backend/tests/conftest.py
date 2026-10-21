@@ -9,7 +9,7 @@ os.environ.update(
     ADMIN_EMAIL='owner@example.com',
     ADMIN_PASSWORD='Owner-Strong-Pass-71',
     KASPI_PHONE='+7 700 000 00 00',
-    KASPI_RECEIVER='Наргиз К.',
+    KASPI_RECEIVER='Имя Ф.',
     PAYMENT_METHODS='kaspi_transfer,cash',
     CODE_RESEND_SECONDS='0',
     EMAIL_BACKEND='console',
